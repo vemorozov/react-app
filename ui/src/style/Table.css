@@ -1,0 +1,8 @@
+.table-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.table-row-cell {
+  padding: 10px 5px;
+}
