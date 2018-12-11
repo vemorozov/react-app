@@ -1,21 +1,20 @@
 buildscript {
-	ext {
-		springBootVersion = '2.1.1.RELEASE'
-	}
 	repositories {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath files('../libs/ojdbc6.jar')
 	}
 }
 
-apply plugin: 'java'
-//apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-apply plugin: 'war'
+plugins {
+	id 'war'
+	id 'java'
+	id 'org.springframework.boot' version '2.1.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+//    id 'io.franzbecker.gradle-lombok' version '1.14'
+}
+
 
 group = 'com.puter'
 version = '1.0-SNAPSHOT'
@@ -25,15 +24,26 @@ repositories {
 	mavenCentral()
 }
 
-configurations {
-	providedRuntime
+
+bootWar {
+//    enabled = true
+//	dependsOn ':ui:buildDev'
+//	from '../ui/build' into 'WEB_INF/classes/static'
+//	from '../ui/build/index.html' into ''
+}
+
+war {
+    enabled = true
+    dependsOn ':ui:buildDev'
+    from('../ui/build') { into 'WEB-INF/classes/static' }
+    from('../ui/build/index.html') { into '' }
 }
 
 dependencies {
     implementation files('../libs/ojdbc6.jar')
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 	implementation('org.springframework.boot:spring-boot-starter-web')
-	compileOnly('org.projectlombok:lombok')
+//	annotationProcessor('org.projectlombok:lombok:1.18.4')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }

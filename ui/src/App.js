@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import Table                from './components/Table';
-import './App.css';
+// import './App.css';
 import NavBar               from './components/NavBar';
 import TableArea            from './components/TableArea';
 

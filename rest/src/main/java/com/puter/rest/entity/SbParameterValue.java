@@ -1,16 +1,11 @@
 package com.puter.rest.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "SB_PARAMETER_VALUE")
 public class SbParameterValue {
     @Id
@@ -25,4 +20,36 @@ public class SbParameterValue {
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getCode() {
+        return this.code;
+    }
+
+    public Long getSortOrder() {
+        return this.sortOrder;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setSortOrder(Long sortOrder) {
+        this.sortOrder = sortOrder;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

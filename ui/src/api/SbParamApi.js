@@ -1,13 +1,30 @@
+// const sbParamUrl = "/sbParameters";
+const sbParamUrl = "http://localhost:8080/sbParameters";
+
 class SbParamApi {
-    static sbParamUrl = "http://localhost:8080/sbParameters";
 
     static getAll() {
-        return fetch(this.sbParamUrl)
+        return fetch(sbParamUrl)
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
                 return json;
             })
+            .catch(err => {
+                throw err;
+            });
+    }
+
+    static commit(commitRequest) {
+        console.log(commitRequest);
+        return fetch(sbParamUrl + '/commit', {
+            method: 'POST',
+            body: JSON.stringify(commitRequest),
+            headers: {'Content-Type': 'application/json'},
+        })
+            .then(handleErrors)
+            .then(res => res.json())
+            .then(json => json)
             .catch(err => {
                 throw err;
             });
