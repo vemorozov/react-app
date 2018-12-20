@@ -1,5 +1,4 @@
-// const sbParamUrl = "/sbParameters";
-const sbParamUrl = "http://localhost:8080/sbParameters";
+const sbParamUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:8080/sbParameters' : '/sbParameters';
 
 class SbParamApi {
 
@@ -16,7 +15,6 @@ class SbParamApi {
     }
 
     static commit(commitRequest) {
-        console.log(commitRequest);
         return fetch(sbParamUrl + '/commit', {
             method: 'POST',
             body: JSON.stringify(commitRequest),

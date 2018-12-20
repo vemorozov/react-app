@@ -1,8 +1,7 @@
 import * as types   from '../actions/actionTypes';
-import initialState from './initialState';
+import initialState from '../store/initialState';
 
 const tableReducer = (state = initialState.table, action) => {
-    console.log(action.type);
     switch (action.type) {
         case types.FETCH_DATA_BEGIN: {
             return {
@@ -30,12 +29,6 @@ const tableReducer = (state = initialState.table, action) => {
                 error: action.error,
                 rows: [],
                 columns: [],
-            }
-        }
-        case types.CHANGE_SELECTION: {
-            return {
-                ...state,
-                selection: action.selection,
             }
         }
         case types.CHANGE_ADDED_ROWS: {
@@ -92,8 +85,6 @@ const tableReducer = (state = initialState.table, action) => {
                 delete: [],
             };
 
-            console.log('preparing commit');
-
             state.rows.forEach(row => {
                 const changeType = row.changeType;
                 if (changeType === 'edited' || changeType === 'added') {
@@ -106,8 +97,6 @@ const tableReducer = (state = initialState.table, action) => {
                 }
 
             });
-
-            console.log(request);
 
             return {
                 ...state,

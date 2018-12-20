@@ -47,17 +47,7 @@ node {
 }
 
 task build(type: NpmTask) {
-    args = ['run', 'build:prod']
-}
-
-task buildDev(type: NpmTask) {
     args = ['run', 'build']
 }
 
-task buildFast(type: NpmTask) {
-    args = ['run', 'build:fast']
-}
-
 build.dependsOn(npm_install)
-//buildDev.dependsOn(npm_install)
-buildFast.dependsOn(npm_install)
