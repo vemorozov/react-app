@@ -1,9 +1,12 @@
-package com.puter.rest.entity;
+package com.puter.harasho.api.model.entity;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+@Setter @Getter @Entity
 @Table(name = "SB_PARAMETER")
 public class SbParameter implements Serializable {
     @Id
@@ -17,31 +20,7 @@ public class SbParameter implements Serializable {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public String getCode() {
-        return this.code;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-//    @Column(name = "MULTIPLE_VALUES")
+//        @Column(name = "MULTIPLE_VALUES")
 //    private Boolean multipleValueAvailable;
 //
 //    @Column(name = "IS_FLAG")

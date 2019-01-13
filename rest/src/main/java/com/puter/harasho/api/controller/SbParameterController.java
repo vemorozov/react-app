@@ -1,10 +1,11 @@
-package com.puter.rest.controller;
+package com.puter.harasho.api.controller;
 
-import com.puter.rest.entity.SbParameter;
-import com.puter.rest.model.dbo.CommitDBO;
-import com.puter.rest.model.dbo.ResultDBO;
-import com.puter.rest.repository.SbParameterRepository;
-import com.puter.rest.service.SbParameterService;
+import com.puter.harasho.api.model.dbo.CommitDBO;
+import com.puter.harasho.api.model.dbo.ResultDBO;
+import com.puter.harasho.api.model.entity.SbParameter;
+import com.puter.harasho.api.model.repository.SbParameterRepository;
+import com.puter.harasho.api.service.SbParameterService;
+import lombok.AllArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,15 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/sbParameters")
+@AllArgsConstructor
 public class SbParameterController {
     private SbParameterRepository repository;
     private SbParameterService service;
-
-    @java.beans.ConstructorProperties({"repository", "service"})
-    public SbParameterController(SbParameterRepository repository, SbParameterService service) {
-        this.repository = repository;
-        this.service = service;
-    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<SbParameter>> findAll() {

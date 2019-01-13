@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: jwt
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@rosb-06.vm.cmx.ru:1521:rosb
+    username: REACT_MESS
+    password: REACT_MESS

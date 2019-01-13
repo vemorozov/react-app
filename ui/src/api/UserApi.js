@@ -23,9 +23,6 @@ class UserApi {
             body: formData
         })
             .then(handleErrors)
-            .then(resp => {
-                return resp;
-            })
             .then(response => response)
             .catch(err => {
                 throw err;
@@ -45,6 +42,7 @@ class UserApi {
 }
 
 function handleErrors(response) {
+    console.log(response);
     if (!response.ok) {
         throw Error(response.statusText);
     }

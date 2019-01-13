@@ -38,7 +38,6 @@ const apiReducer = (state = initialState.api, action) => {
         }
 
         case types.LOGIN_SUCCESS: {
-            console.log(action.response);
             return {
                 ...state,
                 fetching: false,
